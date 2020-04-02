@@ -1,0 +1,27 @@
+{
+    "name": "Football",
+    "short_name": "Football",
+    "description": "Aplikasi PWA pertama saya",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#00897B",
+    "theme_color": "#00897B",
+    "gcm_sender_id": "409456158344",
+    "icons": [
+        {
+            "src": "icon/icon_ball_192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icon/icon_ball_256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "icon/icon_ball_512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

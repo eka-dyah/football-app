@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Competition</title>
+    <meta name="description" content="My first PWA" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/materialize.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#00897B" />
+    <link rel="stylesheet" href="src/font-awesome-4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+       <!-- Navigasi -->
+    <nav class="grey darken-2" role="navigation">
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo" id="logo-container">Competition</a>
+        <a href="index.html" class="sidenav-trigger" data-target="nav-mobile">
+          <i class="fa fa-arrow-left"></i>
+        </a>
+        <ul class="topnav right hide-on-med-and-down">
+          <li><a class="waves-effect" href="index.html">Home</a></li>
+          <li><a class="waves-effect" href="index.html#today">Today Matches</a></li>
+          <li><a class="waves-effect" href="index.html#favorite">Favorite</a></li>
+        </ul>
+        <ul class="sidenav" id="nav-mobile"></ul>
+      </div>
+    </nav>
+    <!-- Akhir Navigasi -->
+    <div class="container">
+      <div class="home">
+        <img id="img-random" src="" width="100px" height="100px" style="margin-right: 2%;"/>
+        <h4 class="center-align" id="header"></h4>
+      </div>
+      <div class="container" id="winner"></div></br>
+      <hr>
+    </div>
+    
+    <div class="container" id="body-content">
+      <ul id="tabs-swipe-demo" class="tabs">
+          <li class="tab col s3"><a class="active blue-text" href="#test-swipe-1">Standings</a></li>
+          <li class="tab col s3"><a class="blue-text" href="#test-swipe-2">Scorers</a></li>
+          <li class="tab col s3"><a class="blue-text" href="#test-swipe-3">Today Matches</a></li>
+          <li class="tab col s3"><a class="blue-text" href="#test-swipe-4">Upcoming</a></li>
+          <li class="tab col s3"><a class="blue-text" href="#test-swipe-5">Teams</a></li>
+      </ul>
+      <div class="content-tab">
+      <div id="test-swipe-1" class="col s12"></div>
+      <div id="test-swipe-2" class="col s12"></div>
+      <div id="test-swipe-3" class="col s12"></div>
+      <div id="test-swipe-4" class="col s12"></div>
+      <div id="test-swipe-5" class="col s12"></div>
+      </div>
+    </div>
+    </br>
+    </br>
+    </br>
+    <div id="modal1" class="modal">
+        <div class="modal-content" id="content-modal">
+        </div>
+    </div>
+
+
+    <!--Footer -->
+  <footer>
+    <div class="footer-copyright grey darken-2 grey-text">
+    <div class="container center">
+         © 2019 Copyright
+    </div>
+    </div>
+  </footer>
+    <!--Akhir Footer -->
+
+
+    <script src="js/materialize.min.js"></script>
+    <script src="js/date.format.js"></script>
+    <script type="text/javascript" src="./js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/idb.js"></script>
+    <script src="js/fordb.js"></script>
+    <script src="js/register.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      //let elem = document.querySelectorAll('.tabs')
+      const el = document.querySelector('.tabs');
+      M.Tabs.init(el);
+      const elems = document.querySelectorAll('.modal');
+      M.Modal.init(elems, {});
+      const listFunction = [
+        {
+          id: 'Standings',
+          func: getStandings()
+        },
+        {
+          id: 'Scorers',
+          func: getScorers()
+        },
+        {
+          id: 'Today Matches',
+          func: getTodayMatches()
+        },
+        {
+          id: 'Upcoming',
+          func: getUpcoming()
+        },
+        {
+          id: 'Teams',
+          func: getTeams()
+        },
+      ];
+      const blueText = document.querySelectorAll('.blue-text');
+      blueText.forEach(menu => {
+        menu.addEventListener('click', () => {
+          const listObj = listFunction.filter(list => menu.text.includes(list.id));
+          console.log('Printed');
+          return listObj[0].func;
+        })
+      });
+
+      btnOnTop();
+      getOnTop();
+      });
+    </script>
+  </body>
+</html>
+
